@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { CardComponentOne } from './CardComponentOne';
 import { createBoard } from './createBoard';
-import { Score } from './Score';
 
 import "./styles.css";
 let list = [];
@@ -11,7 +10,7 @@ let r = 5;
 let s = 12.5;
 export const MemoryComponent = () => {
     useEffect(() => {
-       list = createBoard(12);
+       list = createBoard(30);
        setStateBoard(list);
     }, []);
     const [stateBoard, setStateBoard] = useState(list);
@@ -31,7 +30,6 @@ export const MemoryComponent = () => {
                 if(scoreInit == 0){
                     alert("GAME OVER");
                 }
-                console.log("are different");
                 setTimeout(() => {
                     const newStateBoard = stateBoard.map((item) => {
                         if(item.done === false) {
@@ -65,19 +63,15 @@ export const MemoryComponent = () => {
         });
         setStateBoard(newStateBoard);
     };
+ 
     return (
         <div>
             <h1>Memory App</h1>
             <hr />
-            <div className="container">
-              <Score />
-            </div>
            
             <div className="container">
               score: {scoreInit}
             </div>
-            
-          
 
             <div className="container">
               {stateBoard.map((item) => (
@@ -90,5 +84,8 @@ export const MemoryComponent = () => {
         </div>
     );
 };
+
+
+
 
 
